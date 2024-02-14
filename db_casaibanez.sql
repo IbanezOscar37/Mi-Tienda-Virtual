@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 18-11-2023 a las 06:50:06
+-- Tiempo de generación: 14-02-2024 a las 05:32:31
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -85,7 +85,18 @@ CREATE TABLE IF NOT EXISTS `modulo` (
   `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
   `status` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`idmodulo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `modulo`
+--
+
+INSERT INTO `modulo` (`idmodulo`, `titulo`, `descripcion`, `status`) VALUES
+(1, 'Dashboard', 'Dashboard', 1),
+(2, 'Usuarios', 'Usuarios del sistema', 1),
+(3, 'Clientes', 'Clientes de tienda', 1),
+(4, 'Productos', 'Todos los productos', 1),
+(5, 'Pedidos', 'Pedidos', 1);
 
 -- --------------------------------------------------------
 
@@ -116,10 +127,10 @@ CREATE TABLE IF NOT EXISTS `permisos` (
   `idpermiso` bigint NOT NULL AUTO_INCREMENT,
   `rolid` bigint NOT NULL,
   `moduloid` bigint NOT NULL,
-  `leer` int DEFAULT NULL,
-  `escribir` int DEFAULT NULL,
-  `actualizar` int DEFAULT NULL,
-  `borrar` int DEFAULT NULL,
+  `r` int DEFAULT NULL,
+  `w` int DEFAULT NULL,
+  `u` int DEFAULT NULL,
+  `d` int DEFAULT NULL,
   PRIMARY KEY (`idpermiso`),
   KEY `rolid` (`rolid`),
   KEY `moduloid` (`moduloid`)
